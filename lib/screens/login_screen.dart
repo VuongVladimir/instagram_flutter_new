@@ -45,13 +45,14 @@ class _LoginScreenState extends State<LoginScreen> {
     if (res != 'success') {
       showSnackBar(res, context);
     } else {
-      Navigator.of(context).pushReplacement(
+      Navigator.of(context).pushAndRemoveUntil(
         MaterialPageRoute(
           builder: (context) => const ResponsiveLayout(
             WebScreenLayout(),
             MobileScreenLayout(),
           ),
         ),
+        (route) => false, // điều kiện này sẽ xóa tất cả các màn hình trước đó
       );
     }
   }
